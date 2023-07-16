@@ -1,0 +1,23 @@
+{
+    "buildCommand": "pnpm build",
+    "installCommand": "pnpm install",
+    "builds": [
+        {
+            "src": "apps/plugins-web/dist/**/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "apps/plugins-api/dist/app.mjs",
+            "use": "@vercel/node"
+        }
+    ],
+    "env": {
+        "FORCE_RUNTIME_TAG": "canary"
+    },
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "apps/plugins-api/dist/app.mjs"
+        }
+    ]
+}
