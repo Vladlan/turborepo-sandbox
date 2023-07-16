@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express'
 import { data } from './../fe-challenge.json'
 import { DataGuardDataType } from 'types'
-import cors from 'cors'
 import bodyParser from 'body-parser'
 import { collectTabPlugins } from './utils/collect-tab-plugins'
 import { changePluginStatus } from './utils/change-plugin-status'
@@ -36,16 +35,6 @@ app.post('/plugin', (req: Request, res: Response) => {
   } else {
     changePluginStatus(db, tab, plugin, status)
     res.status(200).json({ message: 'Plugin status changed' })
-  }
-})
-
-app.post('/tab', (req: Request, res: Response) => {
-  const { name, title, icon, active, disabled, inactive } = req.body
-  if (!name || !title || !icon || !active || !disabled || !inactive) {
-    res.status(400).json({ error: 'Missing required fields' })
-  } else {
-    db.tabdata[name] = { title, icon, active, disabled, inactive }
-    res.sendStatus(200)
   }
 })
 

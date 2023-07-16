@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { selectedTabDataAtom, selectedTabAtom } from "../atoms/tabs";
+import { selectedTabDataAtom, selectedTabAtom, allPluginsDisabledAtom } from "../atoms/tabs";
 import PluginCard from "./plugin-card";
 import { API_URL } from "../constants";
 
@@ -19,6 +19,7 @@ const changePluginStatus = async (tab: string, plugin: string, status: string) =
 const TabPage = () => {
   const selectedTab = useAtomValue(selectedTabAtom);
   const selectedTabData = useAtomValue(selectedTabDataAtom);
+  const isAllPluginsDisabled = useAtomValue(allPluginsDisabledAtom);
 
   return (
     <>
@@ -32,10 +33,10 @@ const TabPage = () => {
             pluginName={plugin.title}
             pluginDescription={plugin.description}
             active={plugin.active}
-            disabled={plugin.disabled}
+            disabled={plugin.disabled || isAllPluginsDisabled}
             inactive={plugin.inactive}
             onToggle={() => {
-              changePluginStatus(selectedTab?.id as string, plugin.id, plugin.active ? "inactive" : "active");
+              return changePluginStatus(selectedTab?.id as string, plugin.id, plugin.active ? "inactive" : "active");
             }}
           />
         ))}

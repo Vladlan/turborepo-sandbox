@@ -40,3 +40,6 @@ export const [selectedTabDataAtom] = atomsWithQuery<PluginDataType[]>((get) => (
   },
   cacheTime: 0
 }));
+
+export const allPluginsDisabledAtom = atom<boolean>(true);
+

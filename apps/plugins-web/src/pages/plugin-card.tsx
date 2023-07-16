@@ -6,7 +6,7 @@ interface PluginCardProps {
   active: boolean;
   disabled?: boolean;
   inactive?: boolean;
-  onToggle: () => void;
+  onToggle: () => Promise<void>;
 }
 
 const PluginCard = ({

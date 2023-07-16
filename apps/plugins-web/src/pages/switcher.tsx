@@ -3,7 +3,7 @@ import { FiPower } from "react-icons/fi";
 
 type SwitcherProps = {
   active: boolean;
-  onToggle: () => void;
+  onToggle?: () => Promise<void>;
   disabled?: boolean;
   withIcon?: boolean;
   withStatusDescription?: boolean;
@@ -22,8 +22,9 @@ const Switcher = ({
       className="flex flex-col cursor-pointer transition-all items-center"
       onClick={() => {
         if (disabled) return;
-        onToggle();
         setEnabled(!enabled);
+        if (!onToggle) return;
+        onToggle().catch(() => setEnabled(!enabled));
       }}
     >
       <div
