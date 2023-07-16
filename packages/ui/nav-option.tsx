@@ -8,7 +8,7 @@ type NavOptionProps = {
   onClick: () => void;
 };
 
-const NavOption = ({
+export const NavOption = ({
   active,
   tabName,
   children,
@@ -30,5 +30,3 @@ const NavOption = ({
     </Link>
   );
 };
-
-export default NavOption;

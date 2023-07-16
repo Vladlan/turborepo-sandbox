@@ -1,22 +1,21 @@
-
-export type PluginType = {
+export type DataGuardPluginType = {
   title: string;
   description: string;
-}
-export type TabType = {
+};
+export type DataGuardTabType = {
   title: string;
   icon: string;
   active: string[];
   disabled: string[];
   inactive: string[];
-}
+};
 
 export type DataGuardDataType = {
   tabs: string[];
   tabdata: {
-    [tabName: string]: TabType;
+    [tabName: string]: DataGuardTabType;
   };
   plugins: {
-    [pluginName: string]: PluginType;
+    [pluginName: string]: DataGuardPluginType;
   };
 };

@@ -1,24 +1,10 @@
 import { atom } from "jotai";
 import { atomsWithQuery } from "jotai-tanstack-query";
 import { API_URL } from "../constants";
+import { PluginDataType, TabType } from 'types';
 
-export type TabType = {
-  id: string;
-  icon: string;
-  title: string;
-};
 
-export type PluginDataType = {
-  id: string;
-  order: number;
-  title: string;
-  description: string;
-  active: boolean;
-  disabled: boolean;
-  inactive: boolean;
-};
-
-const [tabsData] = atomsWithQuery((get) => ({
+const [tabsData] = atomsWithQuery(() => ({
   queryKey: ["tab/list"],
   queryFn: async () => {
     const response = await fetch(`${API_URL}/tab/list`);
@@ -35,11 +21,10 @@ export const [selectedTabDataAtom] = atomsWithQuery<PluginDataType[]>((get) => (
   queryFn: async ({ queryKey: [, selectedTab] }) => {
     if (!selectedTab) return [];
     const response = await fetch(`${API_URL}/tab-plugins/${(selectedTab as TabType).id}`);
-    const data = await response.json();
-    return data;
+    return await response.json();
   },
   cacheTime: 0
 }));
 
-export const allPluginsDisabledAtom = atom<boolean>(true);
+export const allPluginsDisabledAtom = atom<boolean>(false);
 

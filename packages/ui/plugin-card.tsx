@@ -1,4 +1,4 @@
-import Switcher from "./switcher";
+import { Switcher } from "./switcher";
 
 interface PluginCardProps {
   pluginName: string;
@@ -9,7 +9,7 @@ interface PluginCardProps {
   onToggle: () => Promise<void>;
 }
 
-const PluginCard = ({
+export const PluginCard = ({
   pluginName,
   pluginDescription,
   active,
@@ -37,5 +37,3 @@ const PluginCard = ({
     </div>
   );
 };
-
-export default PluginCard;

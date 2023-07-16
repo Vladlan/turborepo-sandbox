@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { selectedTabDataAtom, selectedTabAtom, allPluginsDisabledAtom } from "../atoms/tabs";
-import PluginCard from "./plugin-card";
+import { PluginCard } from "ui";
 import { API_URL } from "../constants";
 
 const changePluginStatus = async (tab: string, plugin: string, status: string) => {

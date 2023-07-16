@@ -9,7 +9,7 @@ type SwitcherProps = {
   withStatusDescription?: boolean;
 };
 
-const Switcher = ({
+export const Switcher = ({
   active,
   onToggle,
   disabled = false,
@@ -59,5 +59,3 @@ const Switcher = ({
     </div>
   );
 };
-
-export default Switcher;
