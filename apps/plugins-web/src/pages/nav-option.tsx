@@ -1,15 +1,20 @@
+import { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
 
 type NavOptionProps = {
   active: boolean;
   tabName: string;
   id: string;
-  icon: string;
   onClick: () => void;
 };
 
-
-const NavOption = ({ active, tabName, icon, id, onClick }: NavOptionProps) => {
+const NavOption = ({
+  active,
+  tabName,
+  children,
+  id,
+  onClick,
+}: PropsWithChildren<NavOptionProps>) => {
   return (
     <Link to={`tab/${id}`} onClick={onClick}>
       <div
@@ -19,7 +24,7 @@ const NavOption = ({ active, tabName, icon, id, onClick }: NavOptionProps) => {
             : "hover:bg-slate-50"
         } flex items-center pl-4 transition-all hover:cursor-pointer`}
       >
-        {icon}
+        {children}
         <h6 className="mt-3 mb-3 font-normal">{tabName}</h6>
       </div>
     </Link>

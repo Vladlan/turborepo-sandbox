@@ -2,14 +2,6 @@ import { atom } from "jotai";
 import { atomsWithQuery } from "jotai-tanstack-query";
 import { API_URL } from "../constants";
 
-const [tabsData] = atomsWithQuery((get) => ({
-  queryKey: ["tab/list"],
-  queryFn: async () => {
-    const response = await fetch(`${API_URL}/tab/list`);
-    return response.json();
-  },
-}));
-
 export type TabType = {
   id: string;
   icon: string;
@@ -26,14 +18,23 @@ export type PluginDataType = {
   inactive: boolean;
 };
 
+const [tabsData] = atomsWithQuery((get) => ({
+  queryKey: ["tab/list"],
+  queryFn: async () => {
+    const response = await fetch(`${API_URL}/tab/list`);
+    return response.json();
+  },
+}));
+
 export const tabsDataAtom = atom<TabType[]>((get) => get(tabsData));
 
-export const selectedTabAtom = atom<string | null>(null);
+export const selectedTabAtom = atom<TabType | null>(null);
 
 export const [selectedTabDataAtom] = atomsWithQuery<PluginDataType[]>((get) => ({
   queryKey: ["tab-plugins/", get(selectedTabAtom)],
-  queryFn: async ({ queryKey: [, selectedTabName] }) => {
-    const response = await fetch(`${API_URL}/tab-plugins/${selectedTabName}`);
+  queryFn: async ({ queryKey: [, selectedTab] }) => {
+    if (!selectedTab) return [];
+    const response = await fetch(`${API_URL}/tab-plugins/${(selectedTab as TabType).id}`);
     const data = await response.json();
     return data;
   },

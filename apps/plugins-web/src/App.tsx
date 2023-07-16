@@ -1,19 +1,25 @@
 import Logo from "/logo.svg";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import {
-  selectedTabAtom,
-  tabsDataAtom,
-} from "./atoms/tabs";
+import { selectedTabAtom, tabsDataAtom } from "./atoms/tabs";
 import NavOption from "./pages/nav-option";
 import { Outlet } from "react-router-dom";
 import Switcher from "./pages/switcher";
+import { BiSolidGrid } from "react-icons/bi";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { FaRegCalendarCheck } from "react-icons/fa";
+
+const IconsMap = {
+  "icon-marketing": <BiSolidGrid />,
+  "icon-finance": <RiMoneyDollarCircleLine />,
+  "icon-people": <FaRegCalendarCheck />,
+};
 
 function App() {
   const [tabs] = useAtom(tabsDataAtom);
   const selectedTab = useAtomValue(selectedTabAtom);
   const setSelectedTab = useSetAtom(selectedTabAtom);
   if (tabs?.length && !selectedTab) {
-    setSelectedTab(tabs[0].id);
+    setSelectedTab(tabs[0]);
   }
   const isAllPluginsEnabled = true;
 
@@ -31,11 +37,12 @@ function App() {
             <NavOption
               key={tab.id}
               id={tab.id}
-              active={selectedTab === tab.id}
+              active={selectedTab?.id === tab.id}
               tabName={tab.title}
-              icon={tab.icon}
-              onClick={() => setSelectedTab(tab.id)}
-            />
+              onClick={() => setSelectedTab(tab)}
+            >
+              <div className="w-[2rem]">{IconsMap[tab.icon as keyof typeof IconsMap]}</div>
+            </NavOption>
           ))}
 
           <div className="w-full absolute left-0 bottom-0 flex p-4 pb-8 justify-evenly">
