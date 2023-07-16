@@ -1,26 +1,14 @@
 import express, { Request, Response } from 'express'
 import { data } from './../fe-challenge.json'
 import { DataGuardDataType } from 'types'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import { collectTabPlugins } from './utils/collect-tab-plugins'
+import { changePluginStatus } from './utils/change-plugin-status'
 
 const db = data as DataGuardDataType
 const app = express()
-
-const collectTabPlugins = (tab: string) => {
-  const { active, disabled, inactive } = db.tabdata[tab]
-  const plugins = [...active, ...disabled, ...inactive]
-  return plugins.map((plugin) => {
-    const [,n] = db.plugins[plugin].title.split(' ')
-    return {
-      id: plugin,
-      order: Number.parseInt(n),
-      title: db.plugins[plugin].title,
-      description: db.plugins[plugin].description,
-      active: active.includes(plugin),
-      disabled: disabled.includes(plugin),
-      inactive: inactive.includes(plugin),
-    }
-  }).sort((a, b) => a.order - b.order);
-}
+app.use(bodyParser.json())
 
 
 app.get('/tab/list', (req: Request, res: Response) => {
@@ -34,7 +22,7 @@ app.get('/tab-plugins/:name', (req: Request, res: Response) => {
   const { name } = req.params
   const tabdata = db.tabdata[name]
   if (tabdata) {
-    const plugins = collectTabPlugins(name)
+    const plugins = collectTabPlugins(db, name)
     res.json(plugins)
   } else {
     res.status(404).json({ error: 'Tab not found' })
@@ -42,12 +30,12 @@ app.get('/tab-plugins/:name', (req: Request, res: Response) => {
 })
 
 app.post('/plugin', (req: Request, res: Response) => {
-  const { name, title, description } = req.body
-  if (!name || !title || !description) {
+  const { tab, plugin, status } = req.body
+  if (!tab || !plugin || !status) {
     res.status(400).json({ error: 'Missing required fields' })
   } else {
-    db.plugins[name] = { title, description }
-    res.sendStatus(200)
+    changePluginStatus(db, tab, plugin, status)
+    res.status(200).json({ message: 'Plugin status changed' })
   }
 })
 
