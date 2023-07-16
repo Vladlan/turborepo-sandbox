@@ -38,4 +38,5 @@ export const [selectedTabDataAtom] = atomsWithQuery<PluginDataType[]>((get) => (
     const data = await response.json();
     return data;
   },
+  cacheTime: 0
 }));

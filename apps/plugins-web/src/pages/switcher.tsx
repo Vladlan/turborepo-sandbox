@@ -39,7 +39,7 @@ const Switcher = ({
           {withIcon && (
             <FiPower
               className={`${
-                "powerStatus.enabled" ? "text-green-600" : "text-red-600"
+                enabled ? "text-green-600" : "text-red-600"
               }`}
             />
           )}

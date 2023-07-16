@@ -5,7 +5,8 @@ interface PluginCardProps {
   pluginDescription: string;
   active: boolean;
   disabled?: boolean;
-  enabled?: boolean;
+  inactive?: boolean;
+  onToggle: () => void;
 }
 
 const PluginCard = ({
@@ -13,20 +14,21 @@ const PluginCard = ({
   pluginDescription,
   active,
   disabled = false,
-  enabled = true,
+  inactive = false,
+  onToggle,
 }: PluginCardProps) => {
   return (
     <div
       className={`prose max-w-sm border-2 rounded-lg p-6 min-w-[320px] ${
-        (disabled || !enabled) && "opacity-50"
+        (disabled) && "opacity-50"
       }`}
     >
       <div className="flex justify-between">
         <h3 className="m-0 grey-700">{pluginName}</h3>
         <Switcher
-          active={active}
-          disabled={disabled || !enabled}
-          onToggle={() => {}}
+          active={active || !inactive}
+          disabled={disabled}
+          onToggle={onToggle}
           withStatusDescription={true}
         />
       </div>

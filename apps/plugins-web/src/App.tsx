@@ -7,6 +7,8 @@ import Switcher from "./pages/switcher";
 import { BiSolidGrid } from "react-icons/bi";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { FaRegCalendarCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const IconsMap = {
   "icon-marketing": <BiSolidGrid />,
@@ -15,12 +17,21 @@ const IconsMap = {
 };
 
 function App() {
+  const navigate = useNavigate();
   const [tabs] = useAtom(tabsDataAtom);
   const selectedTab = useAtomValue(selectedTabAtom);
   const setSelectedTab = useSetAtom(selectedTabAtom);
-  if (tabs?.length && !selectedTab) {
-    setSelectedTab(tabs[0]);
-  }
+  useEffect(() => {
+    if (tabs?.length && !selectedTab) {
+      if (window.location.pathname.includes("tab")) {
+        const tabId = window.location.pathname.split("/")[2];
+        const tab = tabs.find((tab) => tab.id === tabId) || tabs[0];
+        setSelectedTab(tab);
+        navigate(`tab/${tab.id}`);
+      }
+    }
+  }, []);
+
   const isAllPluginsEnabled = true;
 
   return (
@@ -41,7 +52,9 @@ function App() {
               tabName={tab.title}
               onClick={() => setSelectedTab(tab)}
             >
-              <div className="w-[2rem]">{IconsMap[tab.icon as keyof typeof IconsMap]}</div>
+              <div className="w-[2rem]">
+                {IconsMap[tab.icon as keyof typeof IconsMap]}
+              </div>
             </NavOption>
           ))}
 
