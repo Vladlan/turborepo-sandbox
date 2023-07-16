@@ -3,38 +3,41 @@ import { data } from './../fe-challenge.json'
 import { DataGuardDataType } from 'types'
 
 const db = data as DataGuardDataType
-
 const app = express()
 
-app.get('/', (req, res) => res.send('It works!'))
+const collectTabPlugins = (tab: string) => {
+  const { active, disabled, inactive } = db.tabdata[tab]
+  const plugins = [...active, ...disabled, ...inactive]
+  return plugins.map((plugin) => {
+    const [,n] = db.plugins[plugin].title.split(' ')
+    return {
+      id: plugin,
+      order: Number.parseInt(n),
+      title: db.plugins[plugin].title,
+      description: db.plugins[plugin].description,
+      active: active.includes(plugin),
+      disabled: disabled.includes(plugin),
+      inactive: inactive.includes(plugin),
+    }
+  }).sort((a, b) => a.order - b.order);
+}
+
 
 app.get('/tab/list', (req: Request, res: Response) => {
-  const tabs = db.tabs
+  const tabs = db.tabs.map((tab) => {
+    return { id: tab, icon: db.tabdata[tab].icon, title: db.tabdata[tab].title }
+  })
   res.json(tabs)
 })
 
-app.get('/tab/:name', (req: Request, res: Response) => {
+app.get('/tab-plugins/:name', (req: Request, res: Response) => {
   const { name } = req.params
   const tabdata = db.tabdata[name]
   if (tabdata) {
-    res.json(tabdata)
+    const plugins = collectTabPlugins(name)
+    res.json(plugins)
   } else {
     res.status(404).json({ error: 'Tab not found' })
-  }
-})
-
-app.get('/plugin/list', (req: Request, res: Response) => {
-  const plugins = db.plugins
-  res.json(plugins)
-})
-
-app.get('/plugin/:name', (req: Request, res: Response) => {
-  const { name } = req.params
-  const plugin = db.plugins[name]
-  if (plugin) {
-    res.json(plugin)
-  } else {
-    res.status(404).json({ error: 'Plugin not found' })
   }
 })
 
