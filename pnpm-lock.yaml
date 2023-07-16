@@ -59,18 +59,25 @@ importers:
       eslint-config-custom: workspace:*
       eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-react-refresh: ^0.4.1
+      jotai: ^2.2.2
+      jotai-tanstack-query: ^0.7.1
       postcss: ^8.4.26
       react: ^18.2.0
       react-dom: ^18.2.0
+      react-icons: ^4.10.1
       react-router-dom: ^6.14.1
       tailwindcss: ^3.3.3
       tsconfig: workspace:*
+      types: workspace:*
       typescript: ^5.0.2
       ui: workspace:*
       vite: ^4.4.0
     dependencies:
+      jotai: 2.2.2_react@18.2.0
+      jotai-tanstack-query: 0.7.1_l23c7otckvae2liwmesqawbo34
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-icons: 4.10.1_react@18.2.0
       react-router-dom: 6.14.1_biqbaboplfbrettd7655fr4n2y
       ui: link:../../packages/ui
     devDependencies:
@@ -87,6 +94,7 @@ importers:
       postcss: 8.4.26
       tailwindcss: 3.3.3
       tsconfig: link:../../packages/tsconfig
+      types: link:../../packages/types
       typescript: 5.1.6
       vite: 4.4.4
 
@@ -760,6 +768,10 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
     dev: true
+
+  /@tanstack/query-core/4.29.25:
+    resolution: {integrity: sha512-DI4y4VC6Uw4wlTpOocEXDky69xeOScME1ezLKsj+hOk7DguC9fkqXtp6Hn39BVb9y0b5IBrY67q6kIX623Zj4Q==}
+    dev: false
 
   /@tsconfig/node10/1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
@@ -2772,6 +2784,28 @@ packages:
     hasBin: true
     dev: true
 
+  /jotai-tanstack-query/0.7.1_l23c7otckvae2liwmesqawbo34:
+    resolution: {integrity: sha512-62PDt8s3c1fN/f3AmTMzAFUHZAstUIPUZMFdhERbmTRWiGznVAq6uJMt08FCI3JL53wZj5q5FhuA39LTL5zqRg==}
+    peerDependencies:
+      '@tanstack/query-core': '*'
+      jotai: '>=1.11.0'
+    dependencies:
+      '@tanstack/query-core': 4.29.25
+      jotai: 2.2.2_react@18.2.0
+    dev: false
+
+  /jotai/2.2.2_react@18.2.0:
+    resolution: {integrity: sha512-Cn8hnBg1sc5ppFwEgVGTfMR5WSM0hbAasd/bdAwIwTaum0j3OUPqBSC4tyk3jtB95vicML+RRWgKFOn6gtfN0A==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /js-sdsl/4.4.0:
     resolution: {integrity: sha512-FfVSdx6pJ41Oa+CF7RDaFmTnCaFhua+SNYQX74riGOpl96x+2jQCqEfQ2bnXu/5DPCqlRuiqyvTJM0Qjz26IVg==}
     dev: false
@@ -3430,6 +3464,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-icons/4.10.1_react@18.2.0:
+    resolution: {integrity: sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
