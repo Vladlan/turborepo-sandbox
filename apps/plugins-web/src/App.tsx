@@ -26,12 +26,12 @@ function App() {
   );
 
   useEffect(() => {
-    if (tabs?.length && !selectedTab) {
-      const tabId = window.location.pathname.split("/")[2];
-      const tab = tabs.find((tab) => tab.id === tabId) || tabs[0];
-      setSelectedTab(tab);
-      navigate(`tab/${tab.id}`);
-    }
+    if (!(tabs?.length && !selectedTab)) return;
+
+    const tabId = window.location.pathname.split("/")[2];
+    const tab = tabs.find((tab) => tab.id === tabId) || tabs[0];
+    setSelectedTab(tab);
+    navigate(`tab/${tab.id}`);
   }, []);
 
   return (
