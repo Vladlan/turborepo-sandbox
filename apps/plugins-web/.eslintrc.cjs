@@ -24,5 +24,9 @@ module.exports = {
       { allowConstantExport: true },
     ],
     '@typescript-eslint/no-non-null-assertion': 'off',
+    'prettier/prettier': [
+      'error',
+      { endOfLine: "auto" },
+    ]
   },
 }
