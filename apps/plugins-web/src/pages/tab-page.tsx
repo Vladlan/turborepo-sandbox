@@ -1,9 +1,6 @@
 import { useAtomValue } from "jotai";
-import {
-  selectedTabDataAtom,
-  selectedTabAtom,
-  allPluginsDisabledAtom,
-} from "../atoms/tabs";
+import { allPluginsDisabledAtom } from "../atoms/tabs";
+import { selectedTabAtom, selectedTabDataAtom } from "../atoms/selected-tab";
 import { PluginCard } from "ui";
 import changePluginStatus from "../api/change-plugin-status";
 
@@ -25,7 +22,11 @@ const TabPage = () => {
             disabled={plugin.disabled || isAllPluginsDisabled}
             inactive={plugin.inactive}
             onToggle={() => {
-              return changePluginStatus(selectedTab?.id as string, plugin.id, plugin.active ? "inactive" : "active");
+              return changePluginStatus(
+                selectedTab?.id as string,
+                plugin.id,
+                plugin.active ? "inactive" : "active"
+              );
             }}
           />
         ))}

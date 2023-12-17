@@ -1,10 +1,7 @@
 import Logo from "/logo.svg";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import {
-  allPluginsDisabledAtom,
-  selectedTabAtom,
-  tabsDataAtom,
-} from "./atoms/tabs";
+import { allPluginsDisabledAtom, tabsDataAtom } from "./atoms/tabs";
+import { selectedTabAtom } from "./atoms/selected-tab";
 import { NavOption, Switcher } from "ui";
 import { Outlet } from "react-router-dom";
 import { BiSolidGrid } from "react-icons/bi";
