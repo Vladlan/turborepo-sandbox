@@ -3,7 +3,7 @@ import { FiPower } from "react-icons/fi";
 
 type SwitcherProps = {
   active: boolean;
-  onToggle?: () => Promise<void>;
+  onToggle?: () => Promise<any>;
   disabled?: boolean;
   withIcon?: boolean;
   withStatusDescription?: boolean;

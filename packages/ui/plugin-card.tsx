@@ -6,7 +6,7 @@ interface PluginCardProps {
   active: boolean;
   disabled?: boolean;
   inactive?: boolean;
-  onToggle: () => Promise<void>;
+  onToggle: () => Promise<any>;
 }
 
 export const PluginCard = ({
@@ -20,7 +20,7 @@ export const PluginCard = ({
   return (
     <div
       className={`prose max-w-sm border-2 rounded-lg p-6 min-w-[320px] ${
-        (disabled) && "opacity-50"
+        disabled && "opacity-50"
       }`}
     >
       <div className="flex justify-between">

@@ -1,20 +1,11 @@
 import { useAtomValue } from "jotai";
-import { selectedTabDataAtom, selectedTabAtom, allPluginsDisabledAtom } from "../atoms/tabs";
+import {
+  selectedTabDataAtom,
+  selectedTabAtom,
+  allPluginsDisabledAtom,
+} from "../atoms/tabs";
 import { PluginCard } from "ui";
-import { API_URL } from "../constants";
-
-const changePluginStatus = async (tab: string, plugin: string, status: string) => {
-  if (!tab || !plugin || !status) return;
-  const response = await fetch(`${API_URL}/plugin`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ tab, plugin, status }),
-  });
-  return response.json();
-}
-
+import changePluginStatus from "../api/change-plugin-status";
 
 const TabPage = () => {
   const selectedTab = useAtomValue(selectedTabAtom);
@@ -23,9 +14,7 @@ const TabPage = () => {
 
   return (
     <>
-      <h1 className="pb-8">
-        {selectedTab?.title} plugins
-      </h1>
+      <h1 className="pb-8">{selectedTab?.title} plugins</h1>
       <div className="flex flex-wrap justify-start gap-8">
         {selectedTabData.map((plugin) => (
           <PluginCard
