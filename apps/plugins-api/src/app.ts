@@ -9,6 +9,9 @@ const db = data as DataGuardDataType
 const app = express()
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 app.get('/tab/list', (req: Request, res: Response) => {
   const tabs = db.tabs.map((tab) => {
@@ -38,8 +41,8 @@ app.post('/plugin', (req: Request, res: Response) => {
   }
 })
 
-const PORT = import.meta.env.PORT || 3000
-app.listen(import.meta.env.PORT, () => {
+const PORT = 3000
+app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
 })
 
