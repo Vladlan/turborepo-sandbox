@@ -1,4 +1,4 @@
-import { atom } from "jotai";
+import { atom } from "jotai/vanilla";
 import { atomsWithQuery } from "jotai-tanstack-query";
 import { TabType } from "types";
 import getTabs from "../api/get-tabs";

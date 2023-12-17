@@ -1,5 +1,5 @@
 import Logo from "/logo.svg";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai/react";
 import { allPluginsDisabledAtom, tabsDataAtom } from "./atoms/tabs";
 import { selectedTabAtom } from "./atoms/selected-tab";
 import { NavOption, Switcher } from "ui";
