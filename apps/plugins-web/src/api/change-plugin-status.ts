@@ -6,18 +6,14 @@ const changePluginStatus = async (
   status: string
 ) => {
   if (!tab || !plugin || !status) return;
-  try {
-    const response = await fetch(`${API_URL}/plugin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ tab, plugin, status }),
-    });
-    return response.json();
-  } catch (error) {
-    console.error(error);
-  }
+  const response = await fetch(`${API_URL}/plugin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ tab, plugin, status }),
+  });
+  return response.json();
 };
 
 export default changePluginStatus;
