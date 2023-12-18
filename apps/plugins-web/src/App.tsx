@@ -1,6 +1,6 @@
 import Logo from "/logo.svg";
 import { useAtom, useAtomValue, useSetAtom } from "jotai/react";
-import { allPluginsDisabledAtom, tabsDataAtom } from "./atoms/tabs";
+import { allPluginsDisabledAtom, tabsData } from "./atoms/tabs";
 import { selectedTabAtom } from "./atoms/selected-tab";
 import { NavOption, Switcher } from "ui";
 import { Outlet } from "react-router-dom";
@@ -18,7 +18,7 @@ const IconsMap = {
 
 function App() {
   const navigate = useNavigate();
-  const [tabs] = useAtom(tabsDataAtom);
+  const tabs = useAtomValue(tabsData);
   const selectedTab = useAtomValue(selectedTabAtom);
   const setSelectedTab = useSetAtom(selectedTabAtom);
   const [isAllPluginsDisabled, setIsAllPluginsDisabled] = useAtom(

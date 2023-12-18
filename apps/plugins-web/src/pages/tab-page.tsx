@@ -1,4 +1,4 @@
-import { useAtomValue } from "jotai";
+import { useAtomValue } from "jotai/react";
 import { allPluginsDisabledAtom } from "../atoms/tabs";
 import { selectedTabAtom, selectedTabDataAtom } from "../atoms/selected-tab";
 import { PluginCard } from "ui";
