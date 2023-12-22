@@ -2,7 +2,7 @@
 
 module.exports = {
   root: true,
-  env: { es2020: true, browser: true, node: true },
+  env: { es2020: true, browser: true, node: true, "jest/globals": true },
   extends: ["custom", "eslint:recommended"],
   parser: "@typescript-eslint/parser",
   parserOptions: {

@@ -10,6 +10,13 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
+  },
   ignorePatterns: ["node_modules"],
 };
