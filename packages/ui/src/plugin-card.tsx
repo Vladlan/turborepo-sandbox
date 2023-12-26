@@ -1,6 +1,6 @@
 import { Switcher } from "./switcher";
 
-interface PluginCardProps {
+export interface PluginCardProps {
   pluginName: string;
   pluginDescription: string;
   active: boolean;
@@ -29,7 +29,7 @@ export const PluginCard = ({
           active={active || !inactive}
           disabled={disabled}
           onToggle={onToggle}
-          withStatusDescription={true}
+          withStatusDescription
         />
       </div>
 

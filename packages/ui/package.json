@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint \"**/*.ts*\"",
     "generate:component": "turbo gen react-component",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.3",

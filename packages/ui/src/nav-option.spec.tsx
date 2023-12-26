@@ -1,9 +1,9 @@
 import { render, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { NavOption } from "./nav-option";
+import { NavOption, NavOptionProps } from "./nav-option";
 
 describe("NavOption", () => {
-  const defaultProps = {
+  const defaultProps: NavOptionProps = {
     active: false,
     tabName: "Test Tab",
     id: "test-tab",
@@ -18,11 +18,11 @@ describe("NavOption", () => {
     );
 
     expect(getByText("Test Content")).toBeInTheDocument();
-    expect(getByText("Test Tab")).toBeInTheDocument();
+    expect(getByText(defaultProps.tabName)).toBeInTheDocument();
   });
 
   it("applies active styles when active prop is true", () => {
-    const { getByText } = render(
+    const { getByRole } = render(
       <MemoryRouter>
         <NavOption {...defaultProps} active>
           Test Content
@@ -30,7 +30,7 @@ describe("NavOption", () => {
       </MemoryRouter>
     );
 
-    const h6 = getByText((content, element) => element?.tagName.toLowerCase() === 'h6');
+    const h6 = getByRole('heading');
     expect(h6.parentElement).toHaveClass("bg-white");
     expect(h6.parentElement).toHaveClass("border-l-[5px]");
     expect(h6.parentElement).toHaveClass("border-red-600");
