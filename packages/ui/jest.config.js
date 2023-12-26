@@ -14,7 +14,10 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   modulePaths: ["<rootDir>"],
   testEnvironment: "jsdom",
+  moduleDirectories: [
+    'node_modules',
+  ],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(ts|tsx)$": "esbuild-jest",
   },
 };
