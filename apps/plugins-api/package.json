@@ -8,7 +8,8 @@
     "build": "vite build",
     "test": "vitest",
     "lint": "eslint src --ext ts --report-unused-disable-directives --max-warnings 0",
-    "build.tsc": "tsc --build ./tsconfig.legacy.build.json"
+    "build.tsc": "tsc --build ./tsconfig.legacy.build.json",
+    "server.prod": "node ./dist/app.mjs"
   },
   "author": "",
   "license": "ISC",

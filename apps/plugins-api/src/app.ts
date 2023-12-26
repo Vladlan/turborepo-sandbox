@@ -9,9 +9,10 @@ const db = data as DataGuardDataType
 const app = express()
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
+app.get('/hi', (req, res) => {
   res.send('Hello World!')
 })
+
 
 app.get('/tab/list', (req: Request, res: Response) => {
   const tabs = db.tabs.map((tab) => {
@@ -40,6 +41,13 @@ app.post('/plugin', (req: Request, res: Response) => {
     res.status(200).json({ message: 'Plugin status changed' })
   }
 })
+
+app.get("/*", express.static("public"));
+app.use((req, res, next) => {
+  // If the request reaches here, it means the static file was not found
+  // Redirect to '/'
+  res.redirect('/');
+});
 
 const PORT = 3000
 app.listen(PORT, () => {
