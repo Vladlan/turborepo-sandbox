@@ -1,3 +1,3 @@
-export * from "./switcher";
-export * from "./nav-option";
-export * from "./plugin-card";
+export * from "./src/switcher";
+export * from "./src/nav-option";
+export * from "./src/plugin-card";
