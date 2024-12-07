@@ -31,6 +31,6 @@
     "types": "workspace:*",
     "typescript": "^5.1.6",
     "vite": "^5.0.10",
-    "vite-plugin-node": "^3.0.2"
+    "vite-plugin-node": "^4.0.0"
   }
 }
