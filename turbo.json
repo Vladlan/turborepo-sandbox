@@ -5,6 +5,7 @@
   ],
   "tasks": {
     "build": {
+      "env": [],
       "dependsOn": [
         "^build"
       ],
