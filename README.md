@@ -1,13 +1,19 @@
-# Turborepo starter
+# DATAGUARD Challenge
 
 This is an official starter Turborepo.
 
-## Using this example
+## Useful commands
 
-Run the following command:
+1. To quickly install dependencies in multiple packages, you can use your package manager:
 
 ```sh
-npx create-turbo@latest
+pnpm install jest --save-dev --recursive --filter=web --filter=@repo/ui --filter=@repo/web
+```
+
+2. You can use your package manager to update dependency versions in one command:
+
+```sh
+pnpm up --recursive typescript@latest
 ```
 
 ## What's inside?
@@ -16,11 +22,12 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
+- `plugins-api`: an express-js app
+- `plugins-web`: React vite UI app
 - `ui`: a stub React component library shared by both `web` and `docs` applications
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `types`: types to share between packages and apps
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
