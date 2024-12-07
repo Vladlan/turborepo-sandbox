@@ -25,7 +25,7 @@ const TabPage = () => {
               return changePluginStatus(
                 selectedTab?.id as string,
                 plugin.id,
-                plugin.active ? "inactive" : "active"
+                plugin.active ? "inactive" : "active",
               );
             }}
           />

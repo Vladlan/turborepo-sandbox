@@ -13,7 +13,6 @@ app.get('/hi', (req, res) => {
   res.send('Hello World!')
 })
 
-
 app.get('/tab/list', (req: Request, res: Response) => {
   const tabs = db.tabs.map((tab) => {
     return { id: tab, icon: db.tabdata[tab].icon, title: db.tabdata[tab].title }
@@ -42,12 +41,12 @@ app.post('/plugin', (req: Request, res: Response) => {
   }
 })
 
-app.get("/*", express.static("public"));
-app.use((req, res, next) => {
+app.get('/*', express.static('public'))
+app.use((req, res) => {
   // If the request reaches here, it means the static file was not found
   // Redirect to '/'
-  res.redirect('/');
-});
+  res.redirect('/')
+})
 
 const PORT = 3000
 app.listen(PORT, () => {

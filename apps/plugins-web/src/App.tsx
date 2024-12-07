@@ -22,7 +22,7 @@ function App() {
   const selectedTab = useAtomValue(selectedTabAtom);
   const setSelectedTab = useSetAtom(selectedTabAtom);
   const [isAllPluginsDisabled, setIsAllPluginsDisabled] = useAtom(
-    allPluginsDisabledAtom
+    allPluginsDisabledAtom,
   );
 
   useEffect(() => {

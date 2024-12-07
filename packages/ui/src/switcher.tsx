@@ -39,9 +39,7 @@ export const Switcher = ({
         >
           {withIcon && (
             <FiPower
-              className={`${
-                enabled ? "text-green-600" : "text-red-600"
-              }`}
+              className={`${enabled ? "text-green-600" : "text-red-600"}`}
             />
           )}
         </div>

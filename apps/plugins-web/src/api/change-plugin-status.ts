@@ -3,7 +3,7 @@ import { API_URL } from "../constants";
 const changePluginStatus = async (
   tab: string,
   plugin: string,
-  status: string
+  status: string,
 ) => {
   if (!tab || !plugin || !status) return;
   const response = await fetch(`${API_URL}/plugin`, {

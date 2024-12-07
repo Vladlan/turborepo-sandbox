@@ -39,9 +39,8 @@ describe("PluginCard component", () => {
     const longDescription =
       "This is a very long description to test the rendering of the PluginCard component with a long plugin description.";
     const { getByText } = render(
-      <PluginCard {...defaultProps} pluginDescription={longDescription} />
+      <PluginCard {...defaultProps} pluginDescription={longDescription} />,
     );
     expect(getByText(longDescription)).toBeInTheDocument();
-
   });
 });

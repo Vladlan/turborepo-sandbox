@@ -13,7 +13,7 @@ describe("Switcher component", () => {
 
     fireEvent.click(switcherElement);
     expect(switcherElement.textContent).toBe("Allowed");
-    
+
     fireEvent.click(switcherElement);
     expect(switcherElement.textContent).toBe("Blocked");
   });
@@ -21,7 +21,7 @@ describe("Switcher component", () => {
   it("handles click event and calls onToggle callback", async () => {
     const onToggleMock = jest.fn(() => Promise.resolve());
     const { getByText } = render(
-      <Switcher {...defaultProps} onToggle={onToggleMock} />
+      <Switcher {...defaultProps} onToggle={onToggleMock} />,
     );
     const switcherElement = getByText("Blocked");
 
@@ -36,7 +36,7 @@ describe("Switcher component", () => {
   it("disables click event when disabled prop is true", () => {
     const onToggleMock = jest.fn();
     const { getByText } = render(
-      <Switcher {...defaultProps} disabled onToggle={onToggleMock} />
+      <Switcher {...defaultProps} disabled onToggle={onToggleMock} />,
     );
     const switcherElement = getByText("Blocked");
 

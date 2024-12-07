@@ -14,7 +14,7 @@ describe("NavOption", () => {
     const { getByText } = render(
       <MemoryRouter>
         <NavOption {...defaultProps}>Test Content</NavOption>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(getByText("Test Content")).toBeInTheDocument();
@@ -27,10 +27,10 @@ describe("NavOption", () => {
         <NavOption {...defaultProps} active>
           Test Content
         </NavOption>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    const h6 = getByRole('heading');
+    const h6 = getByRole("heading");
     expect(h6.parentElement).toHaveClass("bg-white");
     expect(h6.parentElement).toHaveClass("border-l-[5px]");
     expect(h6.parentElement).toHaveClass("border-red-600");
@@ -40,7 +40,7 @@ describe("NavOption", () => {
     const { getByText } = render(
       <MemoryRouter>
         <NavOption {...defaultProps}>Test Content</NavOption>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const navOption = getByText("Test Content").parentElement;

@@ -11,7 +11,7 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  plugins: [],
+  plugins: ['jest'],
   rules: {
     "@typescript-eslint/no-empty-function": "off",
   },
