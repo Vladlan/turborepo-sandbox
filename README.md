@@ -16,6 +16,13 @@ pnpm install jest --save-dev --recursive --filter=web --filter=@repo/ui --filter
 pnpm up --recursive typescript@latest
 ```
 
+3. Dependencies management:
+
+```sh
+npx syncpack lint-semver-ranges
+npx syncpack set-semver-ranges
+```
+
 ## What's inside?
 
 This Turborepo includes the following packages/apps:

@@ -1,0 +1,20 @@
+{
+    "dependencyTypes": [
+        "prod"
+    ],
+    "semverGroups": [
+        {
+            "label": "use exact version numbers in production",
+            "packages": [
+                "**"
+            ],
+            "dependencyTypes": [
+                "prod"
+            ],
+            "dependencies": [
+                "**"
+            ],
+            "range": ""
+        }
+    ]
+}
